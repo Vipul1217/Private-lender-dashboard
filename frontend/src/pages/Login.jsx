@@ -134,11 +134,6 @@ export default function Login() {
                 <p className="text-sm text-slate-600 mb-3">
                   Enter the 6-digit code sent to <span className="font-medium text-charcoal">{identifier}</span>
                 </p>
-                {devOtp && (
-                  <p className="text-xs bg-amber-50 text-amber-700 border border-amber-200 rounded-md px-3 py-2 mb-3">
-                    Dev mode OTP: <span className="font-mono font-semibold">{devOtp}</span>
-                  </p>
-                )}
                 <div className="flex gap-2 justify-between">
                   {otp.map((digit, idx) => (
                     <input
@@ -184,6 +179,7 @@ export default function Login() {
     </div>
   )
 }
+
 
 
 
