@@ -2,15 +2,22 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.database import engine, Base
-from app import models  # noqa: F401 -- registers all models on Base.metadata
+from app.database import engine, Base, SessionLocal
+from app import models  # noqa: F401
 
+from app.models.lender import LenderOfficer
 from app.routes import auth, dashboard, applications, loans, repayments, loan_terms, lender
 
-# Creates tables if they don't exist yet. For a production Postgres setup
-# you'd typically use Alembic migrations instead; this keeps first-run
-# local setup (SQLite or fresh Postgres) to a single command.
 Base.metadata.create_all(bind=engine)
+
+# Seed demo data automatically on a fresh database.
+db = SessionLocal()
+try:
+    if db.query(LenderOfficer).count() == 0:
+        from seed import run
+        run()
+finally:
+    db.close()
 
 app = FastAPI(
     title="Private Lender Dashboard API",
