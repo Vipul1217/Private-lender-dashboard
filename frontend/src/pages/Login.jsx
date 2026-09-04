@@ -38,12 +38,6 @@ export default function Login() {
       setDevOtp(res.data.debug_otp || null)
       setSecondsLeft(res.data.expires_in_seconds || OTP_SECONDS)
       setStep(2)
-      showToast(
-        res.data.debug_otp
-          ? `Dev mode: your OTP is ${res.data.debug_otp}`
-          : 'OTP sent to your registered contact.',
-        'success'
-      )
     } catch (err) {
       showToast(err.response?.data?.detail || 'Could not send OTP. Check the identifier.', 'error')
     } finally {
@@ -190,4 +184,6 @@ export default function Login() {
     </div>
   )
 }
+
+
 
