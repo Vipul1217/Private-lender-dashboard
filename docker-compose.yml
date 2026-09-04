@@ -1,0 +1,21 @@
+version: "3.8"
+
+# Optional: use this if you want to run against real Postgres instead of
+# the zero-config SQLite default. See backend/README.md for how to point
+# DATABASE_URL at this service.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: lender_dashboard_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lender_admin
+      POSTGRES_PASSWORD: lender_pass
+      POSTGRES_DB: lender_dashboard
+    ports:
+      - "5432:5432"
+    volumes:
+      - lender_dashboard_pgdata:/var/lib/postgresql/data
+
+volumes:
+  lender_dashboard_pgdata:
