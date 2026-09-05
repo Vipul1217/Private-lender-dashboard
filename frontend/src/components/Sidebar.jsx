@@ -28,7 +28,7 @@ export default function Sidebar() {
           <ShieldCheck size={18} className="text-white" />
         </div>
         <div>
-          <p className="text-sm font-semibold text-white leading-tight">Trust Score</p>
+          <p className="text-sm font-semibold text-white leading-tight">CREDENCE</p>
           <p className="text-[11px] text-slate-400 leading-tight">Lender Portal</p>
         </div>
       </div>
@@ -39,10 +39,9 @@ export default function Sidebar() {
             to={to}
             end={end}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-brand-500/15 text-brand-400'
-                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive
+                ? 'bg-brand-500/15 text-brand-400'
+                : 'text-slate-300 hover:bg-slate-800 hover:text-white'
               }`
             }
           >
@@ -52,7 +51,7 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="px-5 py-4 border-t border-slate-700/60 text-[11px] text-slate-500">
-        SIH Trust Score Platform
+        CREDENCE LENDER PORTAL
       </div>
     </aside>
   )
